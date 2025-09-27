@@ -33,8 +33,11 @@ A modern, interactive chatbot built with Streamlit and powered by DeepSeek AI th
 
 3. **Activate virtual environment**
    ```bash
-   # Windows
-   .venv\Scripts\activate
+   # Windows PowerShell
+   .venv\Scripts\Activate.ps1
+   
+   # Windows Command Prompt
+   .venv\Scripts\activate.bat
    
    # macOS/Linux
    source .venv/bin/activate
@@ -42,7 +45,7 @@ A modern, interactive chatbot built with Streamlit and powered by DeepSeek AI th
 
 4. **Install dependencies**
    ```bash
-   pip install streamlit openai python-dotenv
+   pip install -r requirements.txt
    ```
 
 5. **Set up environment variables**
@@ -54,6 +57,8 @@ A modern, interactive chatbot built with Streamlit and powered by DeepSeek AI th
 
 6. **Run the application**
    ```bash
+   # Make sure virtual environment is activated first
+   .venv\Scripts\Activate.ps1  # Windows PowerShell
    streamlit run Chatbot.py
    ```
 

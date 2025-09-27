@@ -8,11 +8,16 @@ load_dotenv()
 
 st.title("DeepSeek AI Chatbot")
 
-# Check if API key is set
-api_key = os.getenv("API_KEY")
+# Check if API key is set (works locally and on Streamlit Cloud)
+api_key = os.getenv("API_KEY") or st.secrets.get("API_KEY", None)
 
 if not api_key:
-    st.error(" OpenRouter API key not found!")
+    st.error("⚠️ OpenRouter API key not found!")
+    st.info("**For Local Development:**")
+    st.code("Create .env file with: API_KEY=your-openrouter-api-key")
+    st.info("**For Streamlit Cloud:**")
+    st.code("Add API_KEY to your app secrets in Streamlit Cloud settings")
+    st.info("Get your API key from: https://openrouter.ai/keys")
     st.stop()
 
 # Initialize OpenRouter client for DeepSeek
