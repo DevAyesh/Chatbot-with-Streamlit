@@ -22,10 +22,15 @@ if not api_key:
 
 # Initialize OpenRouter client for DeepSeek
 if 'model' not in st.session_state:
-    st.session_state['model'] = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=api_key,
-    )
+    try:
+        st.session_state['model'] = OpenAI(
+            base_url="https://openrouter.ai/api/v1",
+            api_key=api_key
+        )
+    except Exception as e:
+        st.error(f"❌ Error initializing OpenAI client: {str(e)}")
+        st.info("This might be a version compatibility issue. Please check the error logs.")
+        st.stop()
 
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
